@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import java.util.Queue;
+import java.util.LinkedList;
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Specification</b></em>'.
@@ -139,11 +141,27 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 	 * @generated NOT
 	 */
 	public EList<Task> getSortedTasks() {
-		// TODO: implement this method to return the 'Sorted Tasks' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-		return new BasicEList<Task>();
+		Queue<Task> taskQueue = new LinkedList<Task>();
+		EList<Task> sortedTasks = new BasicEList<Task>();
+
+		// Getting root tasks into the queue
+		for (Task task : ownedTasks)
+			taskQueue.add(task);
+		for (Channel channel : ownedChannels)
+			taskQueue.remove(channel.getDestTask());
+
+		// Breadth First Search to line up levels of tasks by their order of communication
+		while (!taskQueue.isEmpty()) {
+			Task currentTask = taskQueue.poll();
+			sortedTasks.add(currentTask);
+			for (Channel channel : ownedChannels) {
+				if ((channel.getSourceTask() == currentTask) && (!sortedTasks.contains(channel.getDestTask()))) {
+					taskQueue.add(channel.getDestTask());
+				}
+			}
+		}
+
+		return sortedTasks;
 	}
 
 	/**
