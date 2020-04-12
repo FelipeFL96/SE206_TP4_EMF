@@ -5,7 +5,7 @@
     <semanticResources>dag.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_R45dUFRiEeeeQvAI5QbupQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5GONQFcnEeeWd63dYomg_Q" name="dag" repPath="#_R-5-sFRiEeeeQvAI5QbupQ" changeId="b8043fe5-ff03-4436-ac7a-39a951b7c223">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5GONQFcnEeeWd63dYomg_Q" name="dag" repPath="#_R-5-sFRiEeeeQvAI5QbupQ" changeId="4b281218-8239-4c3a-ba9d-c1fbed2bc08d">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="dag.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -585,7 +585,7 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_-4HjUFTKEeeeQvAI5QbupQ" name="DagSpecification" tooltipText="" outgoingEdges="_CzxgkFTLEeeeQvAI5QbupQ _VPKfMFUKEeeeQvAI5QbupQ _jfVMoFUfEeeeQvAI5QbupQ _wHnD4FWwEeeacoMmD8D4XQ _NUNAIHzrEeqy6tQyOKQklw" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_-4HjUFTKEeeeQvAI5QbupQ" name="DagSpecification" tooltipText="&#xA;WARNING : Extra 'constraints' annotation entry for «invariant» 'dag::DagSpecification::dag'" outgoingEdges="_CzxgkFTLEeeeQvAI5QbupQ _VPKfMFUKEeeeQvAI5QbupQ _jfVMoFUfEeeeQvAI5QbupQ _wHnD4FWwEeeacoMmD8D4XQ _NUNAIHzrEeqy6tQyOKQklw" width="12" height="10">
       <target xmi:type="ecore:EClass" href="dag.ecore#//DagSpecification"/>
       <semanticElements xmi:type="ecore:EClass" href="dag.ecore#//DagSpecification"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>

@@ -558,7 +558,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 		  (dagSpecificationEClass,
 		   source,
 		   new String[] {
-			   "constraints", "sortedTasksSize"
+			   "constraints", "sortedTasksSize dag"
 		   });
 		addAnnotation
 		  (taskEClass,

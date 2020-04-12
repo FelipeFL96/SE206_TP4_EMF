@@ -12,6 +12,14 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
+import java.util.List;
+import java.util.Stack;
+import java.util.ArrayList;
+import fr.tpt.mem4csd.dag.sort.model.Node;
+import fr.tpt.mem4csd.dag.sort.model.Arc;
+import fr.tpt.mem4csd.dag.sort.model.Graph;
+import fr.tpt.mem4csd.dag.sort.TopologicalSort;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Validator</b> for the model.
@@ -383,6 +391,7 @@ public class DagValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(dagSpecification, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(dagSpecification, diagnostics, context);
 		if (result || diagnostics != null) result &= validateDagSpecification_sortedTasksSize(dagSpecification, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDagSpecification_dag(dagSpecification, diagnostics, context);
 		return result;
 	}
 
@@ -413,6 +422,61 @@ public class DagValidator extends EObjectValidator {
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);
+	}
+	
+	/**
+	 * Returns a Node in a List<Nodes> for correspondent Task
+	 * @generated NOT
+	 */
+	private Node getCorrespondentNode(List<Node> nodes, Task task) {
+		for (Node node : nodes) {
+			if (node.getName() == task.getName())
+				return node;
+		}
+		return null;
+	}
+
+	/**
+	 * Validates the dag constraint of '<em>Specification</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateDagSpecification_dag(DagSpecification dagSpecification, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// Representing the DAG's nodes as nodes from Graph
+		List<Node> dagNodes = new ArrayList<Node>();
+		for (Task task : dagSpecification.getOwnedTasks()) {
+			Node node = new Node();
+			node.setName(task.getName());
+			dagNodes.add(node);
+		}
+		
+		// Representing DAG's channels as Graph's Arcs
+		for (Channel channel : dagSpecification.getOwnedChannels()) {
+			Node source = getCorrespondentNode(dagNodes, channel.getSourceTask());
+			Node dest = getCorrespondentNode(dagNodes, channel.getDestTask());
+			new Arc(source, dest);
+		}
+		
+		// Building Graph using the node list generated above
+		Graph dagSpecificationGraph = new Graph(dagNodes);
+		Stack<Node> stack = new Stack<Node>();
+		
+		if (TopologicalSort.sort(dagSpecificationGraph, stack)) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "dag", getObjectLabel(dagSpecification, context) },
+						 new Object[] { dagSpecification },
+						 context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**

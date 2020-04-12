@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see fr.tpt.mem4csd.dag.model.dag.DagPackage#getDagSpecification()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='sortedTasksSize'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='sortedTasksSize dag'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot sortedTasksSize='self.sortedTasks-&gt;isEmpty() or self.ownedTasks-&gt;size() = self.sortedTasks-&gt;size()'"
  * @generated
  */
