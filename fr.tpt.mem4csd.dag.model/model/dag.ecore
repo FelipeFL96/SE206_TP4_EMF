@@ -29,6 +29,8 @@
         upperBound="-1" eType="#//Task" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sortedTasks" upperBound="-1"
         eType="#//Task" changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedChannels" upperBound="-1"
+        eType="#//Channel" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//IdentifiedElement #//NamedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -65,5 +67,15 @@
   <eClassifiers xsi:type="ecore:EEnum" name="PortDataType">
     <eLiterals name="int"/>
     <eLiterals name="float" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Channel" eSuperTypes="#//IdentifiedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourcePort" lowerBound="1"
+        eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destPort" lowerBound="1"
+        eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTask" lowerBound="1"
+        eType="#//Task" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destTask" lowerBound="1"
+        eType="#//Task" derived="true"/>
   </eClassifiers>
 </ecore:EPackage>

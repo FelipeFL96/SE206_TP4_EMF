@@ -24,6 +24,7 @@
     <genClasses ecoreClass="dag.ecore#//DagSpecification">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dag.ecore#//DagSpecification/ownedTasks"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dag.ecore#//DagSpecification/sortedTasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dag.ecore#//DagSpecification/ownedChannels"/>
     </genClasses>
     <genClasses ecoreClass="dag.ecore#//Task">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dag.ecore#//Task/period"/>
@@ -33,6 +34,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dag.ecore#//Port/direction"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dag.ecore#//Port/dataType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dag.ecore#//Port/task"/>
+    </genClasses>
+    <genClasses ecoreClass="dag.ecore#//Channel">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dag.ecore#//Channel/sourcePort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dag.ecore#//Channel/destPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dag.ecore#//Channel/sourceTask"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dag.ecore#//Channel/destTask"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
