@@ -40,6 +40,15 @@ public interface DagFactory extends EFactory {
 	Port createPort();
 
 	/**
+	 * Returns a new object of class '<em>Channel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Channel</em>'.
+	 * @generated
+	 */
+	Channel createChannel();
+
+	/**
 	 * Returns a new object of class '<em>Specification</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

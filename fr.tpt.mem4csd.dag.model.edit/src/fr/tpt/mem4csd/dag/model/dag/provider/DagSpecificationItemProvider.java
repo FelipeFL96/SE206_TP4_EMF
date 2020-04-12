@@ -134,6 +134,7 @@ public class DagSpecificationItemProvider extends IdentifiedElementItemProvider 
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DagPackage.Literals.DAG_SPECIFICATION__OWNED_TASKS);
+			childrenFeatures.add(DagPackage.Literals.DAG_SPECIFICATION__OWNED_CHANNELS);
 		}
 		return childrenFeatures;
 	}
@@ -193,6 +194,7 @@ public class DagSpecificationItemProvider extends IdentifiedElementItemProvider 
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DagPackage.DAG_SPECIFICATION__OWNED_TASKS:
+			case DagPackage.DAG_SPECIFICATION__OWNED_CHANNELS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -214,6 +216,11 @@ public class DagSpecificationItemProvider extends IdentifiedElementItemProvider 
 			(createChildParameter
 				(DagPackage.Literals.DAG_SPECIFICATION__OWNED_TASKS,
 				 DagFactory.eINSTANCE.createTask()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DagPackage.Literals.DAG_SPECIFICATION__OWNED_CHANNELS,
+				 DagFactory.eINSTANCE.createChannel()));
 	}
 
 }

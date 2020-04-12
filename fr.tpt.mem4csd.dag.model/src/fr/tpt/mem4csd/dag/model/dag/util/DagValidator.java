@@ -94,6 +94,8 @@ public class DagValidator extends EObjectValidator {
 				return validateTask((Task)value, diagnostics, context);
 			case DagPackage.PORT:
 				return validatePort((Port)value, diagnostics, context);
+			case DagPackage.CHANNEL:
+				return validateChannel((Channel)value, diagnostics, context);
 			case DagPackage.PORT_DIRECTION:
 				return validatePortDirection((PortDirection)value, diagnostics, context);
 			case DagPackage.PORT_DATA_TYPE:
@@ -267,6 +269,15 @@ public class DagValidator extends EObjectValidator {
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateChannel(Channel channel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(channel, diagnostics, context);
 	}
 
 	/**

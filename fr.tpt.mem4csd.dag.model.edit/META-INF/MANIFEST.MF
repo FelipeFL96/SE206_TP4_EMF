@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: fr.tpt.mem4csd.dag.model.edit;singleton:=true
+Automatic-Module-Name: fr.tpt.mem4csd.dag.model.edit
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: fr.tpt.mem4csd.dag.model.dag.provider.DagEditPlugin$Implementation

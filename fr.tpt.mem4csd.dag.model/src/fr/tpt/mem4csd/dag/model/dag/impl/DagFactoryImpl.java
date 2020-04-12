@@ -60,6 +60,7 @@ public class DagFactoryImpl extends EFactoryImpl implements DagFactory {
 			case DagPackage.DAG_SPECIFICATION: return createDagSpecification();
 			case DagPackage.TASK: return createTask();
 			case DagPackage.PORT: return createPort();
+			case DagPackage.CHANNEL: return createChannel();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -104,6 +105,7 @@ public class DagFactoryImpl extends EFactoryImpl implements DagFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Task createTask() {
 		TaskImpl task = new TaskImpl();
 		return task;
@@ -114,6 +116,7 @@ public class DagFactoryImpl extends EFactoryImpl implements DagFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Port createPort() {
 		PortImpl port = new PortImpl();
 		return port;
@@ -124,6 +127,18 @@ public class DagFactoryImpl extends EFactoryImpl implements DagFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Channel createChannel() {
+		ChannelImpl channel = new ChannelImpl();
+		return channel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public DagSpecification createDagSpecification() {
 		DagSpecificationImpl dagSpecification = new DagSpecificationImpl();
 		return dagSpecification;
@@ -174,6 +189,7 @@ public class DagFactoryImpl extends EFactoryImpl implements DagFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DagPackage getDagPackage() {
 		return (DagPackage)getEPackage();
 	}

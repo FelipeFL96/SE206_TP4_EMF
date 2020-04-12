@@ -180,13 +180,22 @@ public interface DagPackage extends EPackage {
 	int DAG_SPECIFICATION__SORTED_TASKS = IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Owned Channels</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DAG_SPECIFICATION__OWNED_CHANNELS = IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DAG_SPECIFICATION_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
+	int DAG_SPECIFICATION_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Specification</em>' class.
@@ -335,6 +344,79 @@ public interface DagPackage extends EPackage {
 	int PORT_OPERATION_COUNT = IDENTIFIED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link fr.tpt.mem4csd.dag.model.dag.impl.ChannelImpl <em>Channel</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.tpt.mem4csd.dag.model.dag.impl.ChannelImpl
+	 * @see fr.tpt.mem4csd.dag.model.dag.impl.DagPackageImpl#getChannel()
+	 * @generated
+	 */
+	int CHANNEL = 5;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__QUALIFIED_NAME = IDENTIFIED_ELEMENT__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__SOURCE_PORT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Dest Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__DEST_PORT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Source Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__SOURCE_TASK = IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Dest Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__DEST_TASK = IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Channel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Channel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_OPERATION_COUNT = IDENTIFIED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link fr.tpt.mem4csd.dag.model.dag.PortDirection <em>Port Direction</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -342,7 +424,7 @@ public interface DagPackage extends EPackage {
 	 * @see fr.tpt.mem4csd.dag.model.dag.impl.DagPackageImpl#getPortDirection()
 	 * @generated
 	 */
-	int PORT_DIRECTION = 5;
+	int PORT_DIRECTION = 6;
 
 	/**
 	 * The meta object id for the '{@link fr.tpt.mem4csd.dag.model.dag.PortDataType <em>Port Data Type</em>}' enum.
@@ -352,7 +434,7 @@ public interface DagPackage extends EPackage {
 	 * @see fr.tpt.mem4csd.dag.model.dag.impl.DagPackageImpl#getPortDataType()
 	 * @generated
 	 */
-	int PORT_DATA_TYPE = 6;
+	int PORT_DATA_TYPE = 7;
 
 
 	/**
@@ -430,6 +512,17 @@ public interface DagPackage extends EPackage {
 	EReference getDagSpecification_SortedTasks();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link fr.tpt.mem4csd.dag.model.dag.DagSpecification#getOwnedChannels <em>Owned Channels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Channels</em>'.
+	 * @see fr.tpt.mem4csd.dag.model.dag.DagSpecification#getOwnedChannels()
+	 * @see #getDagSpecification()
+	 * @generated
+	 */
+	EReference getDagSpecification_OwnedChannels();
+
+	/**
 	 * Returns the meta object for class '{@link fr.tpt.mem4csd.dag.model.dag.Task <em>Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -503,6 +596,60 @@ public interface DagPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPort_Task();
+
+	/**
+	 * Returns the meta object for class '{@link fr.tpt.mem4csd.dag.model.dag.Channel <em>Channel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Channel</em>'.
+	 * @see fr.tpt.mem4csd.dag.model.dag.Channel
+	 * @generated
+	 */
+	EClass getChannel();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.tpt.mem4csd.dag.model.dag.Channel#getSourcePort <em>Source Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source Port</em>'.
+	 * @see fr.tpt.mem4csd.dag.model.dag.Channel#getSourcePort()
+	 * @see #getChannel()
+	 * @generated
+	 */
+	EReference getChannel_SourcePort();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.tpt.mem4csd.dag.model.dag.Channel#getDestPort <em>Dest Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Dest Port</em>'.
+	 * @see fr.tpt.mem4csd.dag.model.dag.Channel#getDestPort()
+	 * @see #getChannel()
+	 * @generated
+	 */
+	EReference getChannel_DestPort();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.tpt.mem4csd.dag.model.dag.Channel#getSourceTask <em>Source Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source Task</em>'.
+	 * @see fr.tpt.mem4csd.dag.model.dag.Channel#getSourceTask()
+	 * @see #getChannel()
+	 * @generated
+	 */
+	EReference getChannel_SourceTask();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.tpt.mem4csd.dag.model.dag.Channel#getDestTask <em>Dest Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Dest Task</em>'.
+	 * @see fr.tpt.mem4csd.dag.model.dag.Channel#getDestTask()
+	 * @see #getChannel()
+	 * @generated
+	 */
+	EReference getChannel_DestTask();
 
 	/**
 	 * Returns the meta object for enum '{@link fr.tpt.mem4csd.dag.model.dag.PortDirection <em>Port Direction</em>}'.
@@ -610,6 +757,14 @@ public interface DagPackage extends EPackage {
 		EReference DAG_SPECIFICATION__SORTED_TASKS = eINSTANCE.getDagSpecification_SortedTasks();
 
 		/**
+		 * The meta object literal for the '<em><b>Owned Channels</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DAG_SPECIFICATION__OWNED_CHANNELS = eINSTANCE.getDagSpecification_OwnedChannels();
+
+		/**
 		 * The meta object literal for the '{@link fr.tpt.mem4csd.dag.model.dag.impl.TaskImpl <em>Task</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -668,6 +823,48 @@ public interface DagPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PORT__TASK = eINSTANCE.getPort_Task();
+
+		/**
+		 * The meta object literal for the '{@link fr.tpt.mem4csd.dag.model.dag.impl.ChannelImpl <em>Channel</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.tpt.mem4csd.dag.model.dag.impl.ChannelImpl
+		 * @see fr.tpt.mem4csd.dag.model.dag.impl.DagPackageImpl#getChannel()
+		 * @generated
+		 */
+		EClass CHANNEL = eINSTANCE.getChannel();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Port</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHANNEL__SOURCE_PORT = eINSTANCE.getChannel_SourcePort();
+
+		/**
+		 * The meta object literal for the '<em><b>Dest Port</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHANNEL__DEST_PORT = eINSTANCE.getChannel_DestPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Task</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHANNEL__SOURCE_TASK = eINSTANCE.getChannel_SourceTask();
+
+		/**
+		 * The meta object literal for the '<em><b>Dest Task</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHANNEL__DEST_TASK = eINSTANCE.getChannel_DestTask();
 
 		/**
 		 * The meta object literal for the '{@link fr.tpt.mem4csd.dag.model.dag.PortDirection <em>Port Direction</em>}' enum.

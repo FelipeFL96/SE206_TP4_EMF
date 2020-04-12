@@ -112,6 +112,7 @@ public class TaskImpl extends IdentifiedElementImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -121,6 +122,7 @@ public class TaskImpl extends IdentifiedElementImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -133,6 +135,7 @@ public class TaskImpl extends IdentifiedElementImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getPeriod() {
 		return period;
 	}
@@ -142,6 +145,7 @@ public class TaskImpl extends IdentifiedElementImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPeriod(int newPeriod) {
 		int oldPeriod = period;
 		period = newPeriod;
@@ -154,6 +158,7 @@ public class TaskImpl extends IdentifiedElementImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Port> getOwnedPorts() {
 		if (ownedPorts == null) {
 			ownedPorts = new EObjectContainmentWithInverseEList<Port>(Port.class, this, DagPackage.TASK__OWNED_PORTS, DagPackage.PORT__TASK);
@@ -311,7 +316,7 @@ public class TaskImpl extends IdentifiedElementImpl implements Task {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", period: ");

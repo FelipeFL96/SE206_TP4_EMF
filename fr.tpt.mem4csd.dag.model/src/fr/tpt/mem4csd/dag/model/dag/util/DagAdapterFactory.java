@@ -88,6 +88,10 @@ public class DagAdapterFactory extends AdapterFactoryImpl {
 				return createPortAdapter();
 			}
 			@Override
+			public Adapter caseChannel(Channel object) {
+				return createChannelAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -146,6 +150,20 @@ public class DagAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPortAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.tpt.mem4csd.dag.model.dag.Channel <em>Channel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.tpt.mem4csd.dag.model.dag.Channel
+	 * @generated
+	 */
+	public Adapter createChannelAdapter() {
 		return null;
 	}
 

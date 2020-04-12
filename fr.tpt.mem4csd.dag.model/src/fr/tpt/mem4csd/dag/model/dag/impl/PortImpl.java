@@ -120,6 +120,7 @@ public class PortImpl extends IdentifiedElementImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -129,6 +130,7 @@ public class PortImpl extends IdentifiedElementImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -141,6 +143,7 @@ public class PortImpl extends IdentifiedElementImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PortDirection getDirection() {
 		return direction;
 	}
@@ -150,6 +153,7 @@ public class PortImpl extends IdentifiedElementImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDirection(PortDirection newDirection) {
 		PortDirection oldDirection = direction;
 		direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
@@ -162,6 +166,7 @@ public class PortImpl extends IdentifiedElementImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PortDataType getDataType() {
 		return dataType;
 	}
@@ -171,6 +176,7 @@ public class PortImpl extends IdentifiedElementImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataType(PortDataType newDataType) {
 		PortDataType oldDataType = dataType;
 		dataType = newDataType == null ? DATA_TYPE_EDEFAULT : newDataType;
@@ -183,6 +189,7 @@ public class PortImpl extends IdentifiedElementImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Task getTask() {
 		if (eContainerFeatureID() != DagPackage.PORT__TASK) return null;
 		return (Task)eInternalContainer();
@@ -203,6 +210,7 @@ public class PortImpl extends IdentifiedElementImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTask(Task newTask) {
 		if (newTask != eInternalContainer() || (eContainerFeatureID() != DagPackage.PORT__TASK && newTask != null)) {
 			if (EcoreUtil.isAncestor(this, newTask))
@@ -392,7 +400,7 @@ public class PortImpl extends IdentifiedElementImpl implements Port {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", direction: ");

@@ -2,6 +2,7 @@
  */
 package fr.tpt.mem4csd.dag.model.dag.impl;
 
+import fr.tpt.mem4csd.dag.model.dag.Channel;
 import fr.tpt.mem4csd.dag.model.dag.DagFactory;
 import fr.tpt.mem4csd.dag.model.dag.DagPackage;
 import fr.tpt.mem4csd.dag.model.dag.DagSpecification;
@@ -70,6 +71,13 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass channelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum portDirectionEEnum = null;
 
 	/**
@@ -107,7 +115,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link DagPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -121,7 +129,8 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 		if (isInited) return (DagPackage)EPackage.Registry.INSTANCE.getEPackage(DagPackage.eNS_URI);
 
 		// Obtain or create and register package
-		DagPackageImpl theDagPackage = (DagPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof DagPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new DagPackageImpl());
+		Object registeredDagPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		DagPackageImpl theDagPackage = registeredDagPackage instanceof DagPackageImpl ? (DagPackageImpl)registeredDagPackage : new DagPackageImpl();
 
 		isInited = true;
 
@@ -133,8 +142,9 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 
 		// Register package validator
 		EValidator.Registry.INSTANCE.put
-			(theDagPackage, 
+			(theDagPackage,
 			 new EValidator.Descriptor() {
+				 @Override
 				 public EValidator getEValidator() {
 					 return DagValidator.INSTANCE;
 				 }
@@ -143,7 +153,6 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 		// Mark meta-data to indicate it can't be changed
 		theDagPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(DagPackage.eNS_URI, theDagPackage);
 		return theDagPackage;
@@ -154,6 +163,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIdentifiedElement() {
 		return identifiedElementEClass;
 	}
@@ -163,6 +173,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIdentifiedElement_QualifiedName() {
 		return (EAttribute)identifiedElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -172,6 +183,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -181,6 +193,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNamedElement_Name() {
 		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -190,6 +203,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDagSpecification() {
 		return dagSpecificationEClass;
 	}
@@ -199,6 +213,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDagSpecification_OwnedTasks() {
 		return (EReference)dagSpecificationEClass.getEStructuralFeatures().get(0);
 	}
@@ -208,6 +223,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDagSpecification_SortedTasks() {
 		return (EReference)dagSpecificationEClass.getEStructuralFeatures().get(1);
 	}
@@ -217,6 +233,17 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EReference getDagSpecification_OwnedChannels() {
+		return (EReference)dagSpecificationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getTask() {
 		return taskEClass;
 	}
@@ -226,6 +253,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTask_Period() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(0);
 	}
@@ -235,6 +263,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTask_OwnedPorts() {
 		return (EReference)taskEClass.getEStructuralFeatures().get(1);
 	}
@@ -244,6 +273,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPort() {
 		return portEClass;
 	}
@@ -253,6 +283,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPort_Direction() {
 		return (EAttribute)portEClass.getEStructuralFeatures().get(0);
 	}
@@ -262,6 +293,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPort_DataType() {
 		return (EAttribute)portEClass.getEStructuralFeatures().get(1);
 	}
@@ -271,6 +303,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPort_Task() {
 		return (EReference)portEClass.getEStructuralFeatures().get(2);
 	}
@@ -280,6 +313,57 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EClass getChannel() {
+		return channelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getChannel_SourcePort() {
+		return (EReference)channelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getChannel_DestPort() {
+		return (EReference)channelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getChannel_SourceTask() {
+		return (EReference)channelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getChannel_DestTask() {
+		return (EReference)channelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getPortDirection() {
 		return portDirectionEEnum;
 	}
@@ -289,6 +373,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getPortDataType() {
 		return portDataTypeEEnum;
 	}
@@ -298,6 +383,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DagFactory getDagFactory() {
 		return (DagFactory)getEFactoryInstance();
 	}
@@ -330,6 +416,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 		dagSpecificationEClass = createEClass(DAG_SPECIFICATION);
 		createEReference(dagSpecificationEClass, DAG_SPECIFICATION__OWNED_TASKS);
 		createEReference(dagSpecificationEClass, DAG_SPECIFICATION__SORTED_TASKS);
+		createEReference(dagSpecificationEClass, DAG_SPECIFICATION__OWNED_CHANNELS);
 
 		taskEClass = createEClass(TASK);
 		createEAttribute(taskEClass, TASK__PERIOD);
@@ -339,6 +426,12 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 		createEAttribute(portEClass, PORT__DIRECTION);
 		createEAttribute(portEClass, PORT__DATA_TYPE);
 		createEReference(portEClass, PORT__TASK);
+
+		channelEClass = createEClass(CHANNEL);
+		createEReference(channelEClass, CHANNEL__SOURCE_PORT);
+		createEReference(channelEClass, CHANNEL__DEST_PORT);
+		createEReference(channelEClass, CHANNEL__SOURCE_TASK);
+		createEReference(channelEClass, CHANNEL__DEST_TASK);
 
 		// Create enums
 		portDirectionEEnum = createEEnum(PORT_DIRECTION);
@@ -379,6 +472,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 		taskEClass.getESuperTypes().add(this.getNamedElement());
 		portEClass.getESuperTypes().add(this.getIdentifiedElement());
 		portEClass.getESuperTypes().add(this.getNamedElement());
+		channelEClass.getESuperTypes().add(this.getIdentifiedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(identifiedElementEClass, IdentifiedElement.class, "IdentifiedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -390,6 +484,7 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 		initEClass(dagSpecificationEClass, DagSpecification.class, "DagSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDagSpecification_OwnedTasks(), this.getTask(), null, "ownedTasks", null, 1, -1, DagSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDagSpecification_SortedTasks(), this.getTask(), null, "sortedTasks", null, 0, -1, DagSpecification.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDagSpecification_OwnedChannels(), this.getChannel(), null, "ownedChannels", null, 0, -1, DagSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTask_Period(), ecorePackage.getEInt(), "period", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -399,6 +494,12 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 		initEAttribute(getPort_Direction(), this.getPortDirection(), "direction", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPort_DataType(), this.getPortDataType(), "dataType", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPort_Task(), this.getTask(), this.getTask_OwnedPorts(), "task", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(channelEClass, Channel.class, "Channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChannel_SourcePort(), this.getPort(), null, "sourcePort", null, 1, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChannel_DestPort(), this.getPort(), null, "destPort", null, 1, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChannel_SourceTask(), this.getTask(), null, "sourceTask", null, 1, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getChannel_DestTask(), this.getTask(), null, "destTask", null, 1, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(portDirectionEEnum, PortDirection.class, "PortDirection");
@@ -428,12 +529,12 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * @generated
 	 */
 	protected void createImportAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Import";	
+		String source = "http://www.eclipse.org/OCL/Import";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "ecore", "http://www.eclipse.org/emf/2002/Ecore"
+			   "ecore", "http://www.eclipse.org/emf/2002/Ecore"
 		   });
 	}
 
@@ -444,32 +545,32 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
-		   });	
+			   "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			   "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			   "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+		   });
 		addAnnotation
-		  (dagSpecificationEClass, 
-		   source, 
+		  (dagSpecificationEClass,
+		   source,
 		   new String[] {
-			 "constraints", "sortedTasksSize"
-		   });	
+			   "constraints", "sortedTasksSize"
+		   });
 		addAnnotation
-		  (taskEClass, 
-		   source, 
+		  (taskEClass,
+		   source,
 		   new String[] {
-			 "constraints", "uniqueNames uniquePortNames singleInputConn"
-		   });	
+			   "constraints", "uniqueNames uniquePortNames singleInputConn"
+		   });
 		addAnnotation
-		  (portEClass, 
-		   source, 
+		  (portEClass,
+		   source,
 		   new String[] {
-			 "constraints", "connected"
+			   "constraints", "connected"
 		   });
 	}
 
@@ -480,26 +581,26 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 	 * @generated
 	 */
 	protected void createPivotAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";	
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
 		addAnnotation
-		  (dagSpecificationEClass, 
-		   source, 
+		  (dagSpecificationEClass,
+		   source,
 		   new String[] {
-			 "sortedTasksSize", "self.sortedTasks->isEmpty() or self.ownedTasks->size() = self.sortedTasks->size()"
-		   });	
+			   "sortedTasksSize", "self.sortedTasks->isEmpty() or self.ownedTasks->size() = self.sortedTasks->size()"
+		   });
 		addAnnotation
-		  (taskEClass, 
-		   source, 
+		  (taskEClass,
+		   source,
 		   new String[] {
-			 "uniqueNames", "not NamedElement.allInstances()->exists( element | element <> self and element.name = self.name )",
-			 "uniquePortNames", "self.ownedPorts->forAll( port : Port | not self.ownedPorts->exists( portIt | port <> portIt and portIt.name = port.name ) )",
-			 "singleInputConn", "self.ownedPorts->select( port | port.direction = PortDirection::_in )->\n\t\t\tforAll( inPort | Channel.allInstances()->select( conn | conn.destPort = inPort )->size() < 2 )"
-		   });	
+			   "uniqueNames", "not NamedElement.allInstances()->exists( element | element <> self and element.name = self.name )",
+			   "uniquePortNames", "self.ownedPorts->forAll( port : Port | not self.ownedPorts->exists( portIt | port <> portIt and portIt.name = port.name ) )",
+			   "singleInputConn", "self.ownedPorts->select( port | port.direction = PortDirection::_in )->\n\t\t\tforAll( inPort | Channel.allInstances()->select( conn | conn.destPort = inPort )->size() < 2 )"
+		   });
 		addAnnotation
-		  (portEClass, 
-		   source, 
+		  (portEClass,
+		   source,
 		   new String[] {
-			 "connected", "Channel.allInstances()->exists( conn | conn.sourcePort = self or conn.destPort = self )"
+			   "connected", "Channel.allInstances()->exists( conn | conn.sourcePort = self or conn.destPort = self )"
 		   });
 	}
 

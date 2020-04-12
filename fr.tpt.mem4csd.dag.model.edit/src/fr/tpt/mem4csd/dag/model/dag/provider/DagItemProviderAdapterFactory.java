@@ -141,11 +141,35 @@ public class DagItemProviderAdapterFactory extends DagAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.tpt.mem4csd.dag.model.dag.Channel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChannelItemProvider channelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.tpt.mem4csd.dag.model.dag.Channel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChannelAdapter() {
+		if (channelItemProvider == null) {
+			channelItemProvider = new ChannelItemProvider(this);
+		}
+
+		return channelItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -156,6 +180,7 @@ public class DagItemProviderAdapterFactory extends DagAdapterFactory implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -204,6 +229,7 @@ public class DagItemProviderAdapterFactory extends DagAdapterFactory implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -214,6 +240,7 @@ public class DagItemProviderAdapterFactory extends DagAdapterFactory implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -224,6 +251,7 @@ public class DagItemProviderAdapterFactory extends DagAdapterFactory implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -238,10 +266,12 @@ public class DagItemProviderAdapterFactory extends DagAdapterFactory implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (dagSpecificationItemProvider != null) dagSpecificationItemProvider.dispose();
 		if (taskItemProvider != null) taskItemProvider.dispose();
 		if (portItemProvider != null) portItemProvider.dispose();
+		if (channelItemProvider != null) channelItemProvider.dispose();
 	}
 
 }

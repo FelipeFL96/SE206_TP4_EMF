@@ -19,7 +19,7 @@ package fr.tpt.mem4csd.dag.model.dag;
  *
  * @see fr.tpt.mem4csd.dag.model.dag.DagPackage#getPort()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='connected'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot connected='Channel.allInstances()->exists( conn | conn.sourcePort = self or conn.destPort = self )'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot connected='Channel.allInstances()-&gt;exists( conn | conn.sourcePort = self or conn.destPort = self )'"
  * @generated
  */
 public interface Port extends IdentifiedElement, NamedElement {

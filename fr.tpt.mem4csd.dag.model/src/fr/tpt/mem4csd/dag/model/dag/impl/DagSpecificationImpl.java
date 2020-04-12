@@ -2,6 +2,7 @@
  */
 package fr.tpt.mem4csd.dag.model.dag.impl;
 
+import fr.tpt.mem4csd.dag.model.dag.Channel;
 import fr.tpt.mem4csd.dag.model.dag.DagPackage;
 import fr.tpt.mem4csd.dag.model.dag.DagSpecification;
 import fr.tpt.mem4csd.dag.model.dag.NamedElement;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.tpt.mem4csd.dag.model.dag.impl.DagSpecificationImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.tpt.mem4csd.dag.model.dag.impl.DagSpecificationImpl#getOwnedTasks <em>Owned Tasks</em>}</li>
  *   <li>{@link fr.tpt.mem4csd.dag.model.dag.impl.DagSpecificationImpl#getSortedTasks <em>Sorted Tasks</em>}</li>
+ *   <li>{@link fr.tpt.mem4csd.dag.model.dag.impl.DagSpecificationImpl#getOwnedChannels <em>Owned Channels</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +69,16 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 	protected EList<Task> ownedTasks;
 
 	/**
+	 * The cached value of the '{@link #getOwnedChannels() <em>Owned Channels</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedChannels()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Channel> ownedChannels;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -90,6 +102,7 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -99,6 +112,7 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -111,6 +125,7 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Task> getOwnedTasks() {
 		if (ownedTasks == null) {
 			ownedTasks = new EObjectContainmentEList<Task>(Task.class, this, DagPackage.DAG_SPECIFICATION__OWNED_TASKS);
@@ -137,10 +152,25 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 	 * @generated
 	 */
 	@Override
+	public EList<Channel> getOwnedChannels() {
+		if (ownedChannels == null) {
+			ownedChannels = new EObjectContainmentEList<Channel>(Channel.class, this, DagPackage.DAG_SPECIFICATION__OWNED_CHANNELS);
+		}
+		return ownedChannels;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case DagPackage.DAG_SPECIFICATION__OWNED_TASKS:
 				return ((InternalEList<?>)getOwnedTasks()).basicRemove(otherEnd, msgs);
+			case DagPackage.DAG_SPECIFICATION__OWNED_CHANNELS:
+				return ((InternalEList<?>)getOwnedChannels()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -159,6 +189,8 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 				return getOwnedTasks();
 			case DagPackage.DAG_SPECIFICATION__SORTED_TASKS:
 				return getSortedTasks();
+			case DagPackage.DAG_SPECIFICATION__OWNED_CHANNELS:
+				return getOwnedChannels();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -179,6 +211,10 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 				getOwnedTasks().clear();
 				getOwnedTasks().addAll((Collection<? extends Task>)newValue);
 				return;
+			case DagPackage.DAG_SPECIFICATION__OWNED_CHANNELS:
+				getOwnedChannels().clear();
+				getOwnedChannels().addAll((Collection<? extends Channel>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -196,6 +232,9 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 				return;
 			case DagPackage.DAG_SPECIFICATION__OWNED_TASKS:
 				getOwnedTasks().clear();
+				return;
+			case DagPackage.DAG_SPECIFICATION__OWNED_CHANNELS:
+				getOwnedChannels().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -215,6 +254,8 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 				return ownedTasks != null && !ownedTasks.isEmpty();
 			case DagPackage.DAG_SPECIFICATION__SORTED_TASKS:
 				return !getSortedTasks().isEmpty();
+			case DagPackage.DAG_SPECIFICATION__OWNED_CHANNELS:
+				return ownedChannels != null && !ownedChannels.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -260,7 +301,7 @@ public class DagSpecificationImpl extends IdentifiedElementImpl implements DagSp
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

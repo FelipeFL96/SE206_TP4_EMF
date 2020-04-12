@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see fr.tpt.mem4csd.dag.model.dag.DagPackage#getTask()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='uniqueNames uniquePortNames singleInputConn'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot uniqueNames='not NamedElement.allInstances()->exists( element | element <> self and element.name = self.name )' uniquePortNames='self.ownedPorts->forAll( port : Port | not self.ownedPorts->exists( portIt | port <> portIt and portIt.name = port.name ) )' singleInputConn='self.ownedPorts->select( port | port.direction = PortDirection::_in )->\n\t\t\tforAll( inPort | Channel.allInstances()->select( conn | conn.destPort = inPort )->size() < 2 )'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot uniqueNames='not NamedElement.allInstances()-&gt;exists( element | element &lt;&gt; self and element.name = self.name )' uniquePortNames='self.ownedPorts-&gt;forAll( port : Port | not self.ownedPorts-&gt;exists( portIt | port &lt;&gt; portIt and portIt.name = port.name ) )' singleInputConn='self.ownedPorts-&gt;select( port | port.direction = PortDirection::_in )-&gt;\n\t\t\tforAll( inPort | Channel.allInstances()-&gt;select( conn | conn.destPort = inPort )-&gt;size() &lt; 2 )'"
  * @generated
  */
 public interface Task extends IdentifiedElement, NamedElement {
