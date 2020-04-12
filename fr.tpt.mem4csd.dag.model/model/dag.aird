@@ -5,7 +5,7 @@
     <semanticResources>dag.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_R45dUFRiEeeeQvAI5QbupQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5GONQFcnEeeWd63dYomg_Q" name="dag" repPath="#_R-5-sFRiEeeeQvAI5QbupQ" changeId="9982d8ac-83a1-45a3-bb2f-9f855cf45ce6">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5GONQFcnEeeWd63dYomg_Q" name="dag" repPath="#_R-5-sFRiEeeeQvAI5QbupQ" changeId="b8043fe5-ff03-4436-ac7a-39a951b7c223">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="dag.ecore#/"/>
       </ownedRepresentationDescriptors>

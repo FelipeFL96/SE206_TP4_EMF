@@ -277,7 +277,94 @@ public class DagValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateChannel(Channel channel, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(channel, diagnostics, context);
+		if (!validate_NoCircularContainment(channel, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validateChannel_coherentTypes(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validateChannel_portDirections(channel, diagnostics, context);
+		if (result || diagnostics != null) result &= validateChannel_portPeriods(channel, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the coherentTypes constraint of '<em>Channel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateChannel_coherentTypes(Channel channel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (channel.getSourcePort().getDataType() != channel.getDestPort().getDataType()) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "coherentTypes", getObjectLabel(channel, context) },
+						 new Object[] { channel },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the portDirections constraint of '<em>Channel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateChannel_portDirections(Channel channel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (
+				(channel.getSourcePort().getDirection() != PortDirection.OUT)
+				|| (channel.getDestPort().getDirection() != PortDirection.IN)
+		) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "portDirections", getObjectLabel(channel, context) },
+						 new Object[] { channel },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the portPeriods constraint of '<em>Channel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateChannel_portPeriods(Channel channel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (channel.getSourceTask().getPeriod() > channel.getDestTask().getPeriod()) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "portPeriods", getObjectLabel(channel, context) },
+						 new Object[] { channel },
+						 context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**

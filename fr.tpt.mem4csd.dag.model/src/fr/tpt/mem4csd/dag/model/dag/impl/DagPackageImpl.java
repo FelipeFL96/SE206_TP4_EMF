@@ -572,6 +572,12 @@ public class DagPackageImpl extends EPackageImpl implements DagPackage {
 		   new String[] {
 			   "constraints", "connected"
 		   });
+		addAnnotation
+		  (channelEClass,
+		   source,
+		   new String[] {
+			   "constraints", "coherentTypes portDirections portPeriods"
+		   });
 	}
 
 	/**

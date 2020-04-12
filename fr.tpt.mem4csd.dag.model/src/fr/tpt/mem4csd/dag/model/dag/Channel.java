@@ -19,7 +19,7 @@ package fr.tpt.mem4csd.dag.model.dag;
  * </ul>
  *
  * @see fr.tpt.mem4csd.dag.model.dag.DagPackage#getChannel()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='coherentTypes portDirections portPeriods'"
  * @generated
  */
 public interface Channel extends IdentifiedElement {
