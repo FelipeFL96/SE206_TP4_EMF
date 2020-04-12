@@ -88,19 +88,6 @@ public class ChannelTest extends IdentifiedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link fr.tpt.mem4csd.dag.model.dag.Channel#setSourceTask(fr.tpt.mem4csd.dag.model.dag.Task) <em>Source Task</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.tpt.mem4csd.dag.model.dag.Channel#setSourceTask(fr.tpt.mem4csd.dag.model.dag.Task)
-	 * @generated
-	 */
-	public void testSetSourceTask() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
 	 * Tests the '{@link fr.tpt.mem4csd.dag.model.dag.Channel#getDestTask() <em>Dest Task</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -109,19 +96,6 @@ public class ChannelTest extends IdentifiedElementTest {
 	 */
 	public void testGetDestTask() {
 		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link fr.tpt.mem4csd.dag.model.dag.Channel#setDestTask(fr.tpt.mem4csd.dag.model.dag.Task) <em>Dest Task</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.tpt.mem4csd.dag.model.dag.Channel#setDestTask(fr.tpt.mem4csd.dag.model.dag.Task)
-	 * @generated
-	 */
-	public void testSetDestTask() {
-		// TODO: implement this feature setter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}

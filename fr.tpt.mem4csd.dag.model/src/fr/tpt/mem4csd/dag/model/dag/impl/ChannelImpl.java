@@ -52,26 +52,6 @@ public class ChannelImpl extends IdentifiedElementImpl implements Channel {
 	protected Port destPort;
 
 	/**
-	 * The cached value of the '{@link #getSourceTask() <em>Source Task</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSourceTask()
-	 * @generated
-	 * @ordered
-	 */
-	protected Task sourceTask;
-
-	/**
-	 * The cached value of the '{@link #getDestTask() <em>Dest Task</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDestTask()
-	 * @generated
-	 * @ordered
-	 */
-	protected Task destTask;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -177,37 +157,17 @@ public class ChannelImpl extends IdentifiedElementImpl implements Channel {
 	 */
 	@Override
 	public Task getSourceTask() {
-		if (sourceTask != null && sourceTask.eIsProxy()) {
-			InternalEObject oldSourceTask = (InternalEObject)sourceTask;
-			sourceTask = (Task)eResolveProxy(oldSourceTask);
-			if (sourceTask != oldSourceTask) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DagPackage.CHANNEL__SOURCE_TASK, oldSourceTask, sourceTask));
-			}
-		}
-		return sourceTask;
+		Task sourceTask = basicGetSourceTask();
+		return sourceTask != null && sourceTask.eIsProxy() ? (Task)eResolveProxy((InternalEObject)sourceTask) : sourceTask;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Task basicGetSourceTask() {
-		return sourceTask;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setSourceTask(Task newSourceTask) {
-		Task oldSourceTask = sourceTask;
-		sourceTask = newSourceTask;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DagPackage.CHANNEL__SOURCE_TASK, oldSourceTask, sourceTask));
+		return sourcePort.getTask();
 	}
 
 	/**
@@ -217,37 +177,17 @@ public class ChannelImpl extends IdentifiedElementImpl implements Channel {
 	 */
 	@Override
 	public Task getDestTask() {
-		if (destTask != null && destTask.eIsProxy()) {
-			InternalEObject oldDestTask = (InternalEObject)destTask;
-			destTask = (Task)eResolveProxy(oldDestTask);
-			if (destTask != oldDestTask) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DagPackage.CHANNEL__DEST_TASK, oldDestTask, destTask));
-			}
-		}
-		return destTask;
+		Task destTask = basicGetDestTask();
+		return destTask != null && destTask.eIsProxy() ? (Task)eResolveProxy((InternalEObject)destTask) : destTask;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Task basicGetDestTask() {
-		return destTask;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setDestTask(Task newDestTask) {
-		Task oldDestTask = destTask;
-		destTask = newDestTask;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DagPackage.CHANNEL__DEST_TASK, oldDestTask, destTask));
+		return destPort.getTask();
 	}
 
 	/**
@@ -288,12 +228,6 @@ public class ChannelImpl extends IdentifiedElementImpl implements Channel {
 			case DagPackage.CHANNEL__DEST_PORT:
 				setDestPort((Port)newValue);
 				return;
-			case DagPackage.CHANNEL__SOURCE_TASK:
-				setSourceTask((Task)newValue);
-				return;
-			case DagPackage.CHANNEL__DEST_TASK:
-				setDestTask((Task)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -312,12 +246,6 @@ public class ChannelImpl extends IdentifiedElementImpl implements Channel {
 			case DagPackage.CHANNEL__DEST_PORT:
 				setDestPort((Port)null);
 				return;
-			case DagPackage.CHANNEL__SOURCE_TASK:
-				setSourceTask((Task)null);
-				return;
-			case DagPackage.CHANNEL__DEST_TASK:
-				setDestTask((Task)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -335,9 +263,9 @@ public class ChannelImpl extends IdentifiedElementImpl implements Channel {
 			case DagPackage.CHANNEL__DEST_PORT:
 				return destPort != null;
 			case DagPackage.CHANNEL__SOURCE_TASK:
-				return sourceTask != null;
+				return basicGetSourceTask() != null;
 			case DagPackage.CHANNEL__DEST_TASK:
-				return destTask != null;
+				return basicGetDestTask() != null;
 		}
 		return super.eIsSet(featureID);
 	}

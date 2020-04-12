@@ -72,43 +72,21 @@ public interface Channel extends IdentifiedElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source Task</em>' reference.
-	 * @see #setSourceTask(Task)
 	 * @see fr.tpt.mem4csd.dag.model.dag.DagPackage#getChannel_SourceTask()
-	 * @model required="true" derived="true"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	Task getSourceTask();
-
-	/**
-	 * Sets the value of the '{@link fr.tpt.mem4csd.dag.model.dag.Channel#getSourceTask <em>Source Task</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source Task</em>' reference.
-	 * @see #getSourceTask()
-	 * @generated
-	 */
-	void setSourceTask(Task value);
 
 	/**
 	 * Returns the value of the '<em><b>Dest Task</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Dest Task</em>' reference.
-	 * @see #setDestTask(Task)
 	 * @see fr.tpt.mem4csd.dag.model.dag.DagPackage#getChannel_DestTask()
-	 * @model required="true" derived="true"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	Task getDestTask();
-
-	/**
-	 * Sets the value of the '{@link fr.tpt.mem4csd.dag.model.dag.Channel#getDestTask <em>Dest Task</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Dest Task</em>' reference.
-	 * @see #getDestTask()
-	 * @generated
-	 */
-	void setDestTask(Task value);
 
 } // Channel
