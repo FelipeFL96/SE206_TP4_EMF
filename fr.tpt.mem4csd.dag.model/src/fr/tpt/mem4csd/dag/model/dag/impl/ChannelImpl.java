@@ -269,5 +269,21 @@ public class ChannelImpl extends IdentifiedElementImpl implements Channel {
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getQualifiedName() {
+		try {
+			return getSourceTask().getName() + '.' + 
+				getSourcePort().getName() + "->" + 
+				getDestTask().getName() + '.' +
+				getDestPort().getName();
+		}
+		catch (NullPointerException e) {
+			return "";
+		}
+	}
 
 } //ChannelImpl
