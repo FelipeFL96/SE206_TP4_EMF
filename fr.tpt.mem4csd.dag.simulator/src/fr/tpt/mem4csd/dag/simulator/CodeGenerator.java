@@ -29,9 +29,9 @@ public class CodeGenerator {
 		for(Task t : _theDag.getOwnedTasks()) {
 			for(Port p:t.getOwnedPorts()) {
 				if (p.getDataType() == PortDataType.INT)
-					_utils.addTextNewLine("int port_" + p.getTask().getName() + "_" + p.getName());
+					_utils.addTextNewLine("int port_" + p.getTask().getName() + "_" + p.getName() + ";");
 				else if (p.getDataType() == PortDataType.FLOAT)
-					_utils.addTextNewLine("float port_" + p.getTask().getName() + "_" + p.getName());
+					_utils.addTextNewLine("float port_" + p.getTask().getName() + "_" + p.getName() + ";");
 			}
 		}
 		
@@ -95,13 +95,13 @@ public class CodeGenerator {
 			
 			// TODO TP: Code the call of the task function passing the appropriate arguments
 			if (p.getDirection().equals(PortDirection.IN)) {
-				_utils.addText("port_" + p.getTask().getName() + "_" + p.getName());
+				_utils.addTextNoIdent("port_" + p.getTask().getName() + "_" + p.getName());
 			}
 			else if (p.getDirection().equals(PortDirection.OUT)) {
 				_utils.addText("&port_" + p.getTask().getName() + "_" + p.getName());
 			}
 			if (!(t.getOwnedPorts().indexOf(p) == (t.getOwnedPorts().size() - 1))) {
-				_utils.addText(", ");
+				_utils.addText(",");
 			}
 		}
 		
@@ -118,10 +118,13 @@ public class CodeGenerator {
 					c.getSourcePort().equals(p)) {
 					
 					// TODO TP: Code the affectation of the value of the destination port of the channel
-					_utils.addText("port_" + c.getDestTask().getName() + "_" + c.getDestPort().getName());
-					_utils.addText(" = ");
-					_utils.addText("port_" + c.getSourceTask().getName() + "_" + c.getSourcePort().getName());
-					_utils.addText(";");
+					_utils.addText(
+							"port_" + c.getDestTask().getName() + "_" + c.getDestPort().getName()
+							+ " = "
+							+ "port_" + c.getSourceTask().getName() + "_" + c.getSourcePort().getName() 
+							+ ";"
+					);
+					_utils.addTextNewLine("");
 				}
 			}
 		}
@@ -173,14 +176,15 @@ public class CodeGenerator {
 			
 			// TODO TP: Increment the values of the output ports
 			if (p.getDirection().equals(PortDirection.OUT)) {
-				_utils.addText("*port_" + p.getTask().getName() + "_" + p.getName());
-				_utils.addText(" = ");
-				_utils.addText("*port_" + p.getTask().getName() + "_" + p.getName());
+				_utils.addText("* " + p.getName());
+				_utils.addText("=");
+				_utils.addText("* " + p.getName());
 				if (p.getDataType().equals(PortDataType.INT))
-					_utils.addText(" + 1;");
+					_utils.addText("+ 1;");
 				else if (p.getDataType().equals(PortDataType.FLOAT))
-					_utils.addText(" + 0.1;");
+					_utils.addText("+ 0.1;");
 			}
+			_utils.addTextNewLine("");
 		}
 	}
 
