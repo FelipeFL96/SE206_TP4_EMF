@@ -1,12 +1,13 @@
 package fr.tpt.mem4csd.dag.simulator;
 
 import java.io.IOException;
-
+import org.eclipse.emf.common.util.EList;
 import fr.tpt.mem4csd.dag.model.dag.DagSpecification;
 import fr.tpt.mem4csd.dag.model.dag.Port;
 import fr.tpt.mem4csd.dag.model.dag.PortDataType;
 import fr.tpt.mem4csd.dag.model.dag.PortDirection;
 import fr.tpt.mem4csd.dag.model.dag.Task;
+import fr.tpt.mem4csd.dag.model.dag.Channel;
 
 public class CodeGenerator {
 
@@ -23,11 +24,14 @@ public class CodeGenerator {
 		_utils.addTextNewLine("#include \"delay_until.h\"");
 		_utils.addTextNewLine("");
 
+		// TODO TP: Generate the code for declaring the global variables of each port
+		// Use the _utils variable to generate the code
 		for(Task t : _theDag.getOwnedTasks()) {
 			for(Port p:t.getOwnedPorts()) {
-				
-				// TODO TP: Generate the code for declaring the global variables of each port
-				// Use the _utils variable to generate the code 
+				if (p.getDataType() == PortDataType.INT)
+					_utils.addTextNewLine("int port_" + p.getTask().getName() + "_" + p.getName());
+				else if (p.getDataType() == PortDataType.FLOAT)
+					_utils.addTextNewLine("float port_" + p.getTask().getName() + "_" + p.getName());
 			}
 		}
 		
@@ -90,6 +94,15 @@ public class CodeGenerator {
 		for(Port p:t.getOwnedPorts()) {
 			
 			// TODO TP: Code the call of the task function passing the appropriate arguments
+			if (p.getDirection().equals(PortDirection.IN)) {
+				_utils.addText("port_" + p.getTask().getName() + "_" + p.getName());
+			}
+			else if (p.getDirection().equals(PortDirection.OUT)) {
+				_utils.addText("&port_" + p.getTask().getName() + "_" + p.getName());
+			}
+			if (!(t.getOwnedPorts().indexOf(p) == (t.getOwnedPorts().size() - 1))) {
+				_utils.addText(", ");
+			}
 		}
 		
 		_utils.addTextNoIdent(");");
@@ -100,13 +113,17 @@ public class CodeGenerator {
 				continue;
 			}
 			
-//			for(Channel c: _theDag.getOwnedChannels()) {
-//				if(	c.getSourceTask().equals(t) &&
-//					c.getSourcePort().equals(p)) {
+			for(Channel c: _theDag.getOwnedChannels()) {
+				if(	c.getSourceTask().equals(t) &&
+					c.getSourcePort().equals(p)) {
 					
 					// TODO TP: Code the affectation of the value of the destination port of the channel
-//				}
-//			}
+					_utils.addText("port_" + c.getDestTask().getName() + "_" + c.getDestPort().getName());
+					_utils.addText(" = ");
+					_utils.addText("port_" + c.getSourceTask().getName() + "_" + c.getSourcePort().getName());
+					_utils.addText(";");
+				}
+			}
 		}
 	}
 
@@ -155,6 +172,15 @@ public class CodeGenerator {
 			generatePortDisplay(p);
 			
 			// TODO TP: Increment the values of the output ports
+			if (p.getDirection().equals(PortDirection.OUT)) {
+				_utils.addText("*port_" + p.getTask().getName() + "_" + p.getName());
+				_utils.addText(" = ");
+				_utils.addText("*port_" + p.getTask().getName() + "_" + p.getName());
+				if (p.getDataType().equals(PortDataType.INT))
+					_utils.addText(" + 1;");
+				else if (p.getDataType().equals(PortDataType.FLOAT))
+					_utils.addText(" + 0.1;");
+			}
 		}
 	}
 
